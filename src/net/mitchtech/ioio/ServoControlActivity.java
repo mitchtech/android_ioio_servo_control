@@ -2,12 +2,16 @@ package net.mitchtech.ioio;
 
 import ioio.lib.api.PwmOutput;
 import ioio.lib.api.exception.ConnectionLostException;
-import ioio.lib.util.AbstractIOIOActivity;
+import ioio.lib.util.BaseIOIOLooper;
+import ioio.lib.util.IOIOLooper;
+//import ioio.lib.util.AbstractIOIOActivity;
+import ioio.lib.util.android.IOIOActivity;
 import net.mitchtech.ioio.servocontrol.R;
 import android.os.Bundle;
 import android.widget.SeekBar;
 
-public class ServoControlActivity extends AbstractIOIOActivity {
+//public class ServoControlActivity extends AbstractIOIOActivity {
+public class ServoControlActivity extends IOIOActivity {
 	private final int PAN_PIN = 3;
 	private final int TILT_PIN = 6;
 	
@@ -27,14 +31,17 @@ public class ServoControlActivity extends AbstractIOIOActivity {
 		enableUi(false);
 	}
 
-	class IOIOThread extends AbstractIOIOActivity.IOIOThread {
+//	class IOIOThread extends AbstractIOIOActivity.IOIOThread {
+	class IOIOThread extends BaseIOIOLooper{
 		private PwmOutput panPwmOutput;
 		private PwmOutput tiltPwmOutput;
 
 		public void setup() throws ConnectionLostException {
 			try {
-				panPwmOutput = ioio_.openPwmOutput(new DigitalOutput.Spec(PAN_PIN, Mode.OPEN_DRAIN), PWM_FREQ);
-				tiltPwmOutput = ioio_.openPwmOutput(new DigitalOutput.Spec(TILT_PIN, Mode.OPEN_DRAIN), PWM_FREQ);
+//				panPwmOutput = ioio_.openPwmOutput(new DigitalOutput.Spec(PAN_PIN, Mode.OPEN_DRAIN), PWM_FREQ);
+//				tiltPwmOutput = ioio_.openPwmOutput(new DigitalOutput.Spec(TILT_PIN, Mode.OPEN_DRAIN), PWM_FREQ);
+				panPwmOutput = ioio_.openPwmOutput(PAN_PIN, PWM_FREQ);
+				tiltPwmOutput = ioio_.openPwmOutput(TILT_PIN, PWM_FREQ);
 				enableUi(true);
 			} catch (ConnectionLostException e) {
 				enableUi(false);
@@ -46,7 +53,7 @@ public class ServoControlActivity extends AbstractIOIOActivity {
 			try {
 				panPwmOutput.setPulseWidth(500 + mPanSeekBar.getProgress() * 2);
 				tiltPwmOutput.setPulseWidth(500 + mTiltSeekBar.getProgress() * 2);
-				sleep(10);
+				Thread.sleep(10);
 			} catch (InterruptedException e) {
 				ioio_.disconnect();
 			} catch (ConnectionLostException e) {
@@ -57,7 +64,8 @@ public class ServoControlActivity extends AbstractIOIOActivity {
 	}
 	
 	@Override
-	protected AbstractIOIOActivity.IOIOThread createIOIOThread() {
+//	protected AbstractIOIOActivity.IOIOThread createIOIOThread() {
+	protected IOIOLooper createIOIOLooper() {
 		return new IOIOThread();
 	}
 
