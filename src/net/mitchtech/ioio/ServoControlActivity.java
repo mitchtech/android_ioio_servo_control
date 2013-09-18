@@ -115,7 +115,7 @@ public class ServoControlActivity extends IOIOActivity implements SensorEventLis
 		public void loop() throws ConnectionLostException {
 			SPEED = sBar.getProgress();
 			try {
-					//txtViewSensor1.setText((int) sensor1.read());
+					txtViewSensor1.setText(SPEED);
 					if(bForward.isPressed() || bBackward.isPressed()){
 						if(bForward.isPressed()){
 							direction1.write(true);
