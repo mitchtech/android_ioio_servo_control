@@ -70,7 +70,7 @@ public class ServoControlActivity extends IOIOActivity implements SensorEventLis
 		
 		sBar = (SeekBar) findViewById(R.id.seekBar1);
 		
-		txtViewSensor1 = (TextView) findViewById(R.id.txtRawVoltage);
+		txtViewSensor1 = (TextView) findViewById(R.id.txtVoltage);
 		sensors = new float[5];
 		new IMU().start();
 		
@@ -111,11 +111,20 @@ public class ServoControlActivity extends IOIOActivity implements SensorEventLis
 				throw e;
 			}
 		}
+		
+		public void setText(final String msg){
+			runOnUiThread(new Runnable(){
+				@Override
+				public void run(){
+					txtViewSensor1.setText(msg);	
+				}
+			});
+		}
 
 		public void loop() throws ConnectionLostException {
 			SPEED = sBar.getProgress();
 			try {
-					txtViewSensor1.setText(SPEED);
+					setText("" + sensor1.read());
 					if(bForward.isPressed() || bBackward.isPressed()){
 						if(bForward.isPressed()){
 							direction1.write(true);
