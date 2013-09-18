@@ -1,5 +1,6 @@
 package net.mitchtech.ioio;
 
+import ioio.lib.api.AnalogInput;
 import ioio.lib.api.DigitalOutput;
 import ioio.lib.api.PwmOutput;
 import ioio.lib.api.exception.ConnectionLostException;
@@ -9,16 +10,20 @@ import ioio.lib.util.IOIOLooper;
 import ioio.lib.util.android.IOIOActivity;
 import ioio.lib.android.bluetooth.*;
 import net.mitchtech.ioio.servocontrol.R;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 //public class ServoControlActivity extends AbstractIOIOActivity {
-public class ServoControlActivity extends IOIOActivity {
+public class ServoControlActivity extends IOIOActivity implements SensorEventListener{
 	private final int MOTOR1 = 11;
 	private final int MOTOR2 = 12;
 	private final int MOTOR3 = 13;
@@ -28,8 +33,9 @@ public class ServoControlActivity extends IOIOActivity {
 	private final int DIRECTION3 = 7;
 	private final int DIRECTION4 = 10;
 	private final int PWM_FREQ = 100;
+	private final int SENSOR1 = 35;
 	
-	private final int SPEED = 1500;
+	private int SPEED = 1500;
 	
 	private Button bForward;
 	private Button bBackward;
@@ -40,6 +46,12 @@ public class ServoControlActivity extends IOIOActivity {
 	private ToggleButton tMotor2;
 	private ToggleButton tMotor3;
 	private ToggleButton tMotor4;
+	
+	private SeekBar sBar;
+	
+	private TextView txtViewSensor1;
+	
+	private static float sensors[];
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -56,6 +68,12 @@ public class ServoControlActivity extends IOIOActivity {
 		tMotor3 = (ToggleButton) findViewById(R.id.tgMotor3);
 		tMotor4 = (ToggleButton) findViewById(R.id.tgMotor4);
 		
+		sBar = (SeekBar) findViewById(R.id.seekBar1);
+		
+		txtViewSensor1 = (TextView) findViewById(R.id.txtRawVoltage);
+		sensors = new float[5];
+		new IMU().start();
+		
 		enableUi(false);
 	}
 
@@ -70,6 +88,8 @@ public class ServoControlActivity extends IOIOActivity {
 		private DigitalOutput direction2;
 		private DigitalOutput direction3;
 		private DigitalOutput direction4;
+		
+		private AnalogInput sensor1;
 
 		public void setup() throws ConnectionLostException {
 			try {
@@ -83,6 +103,7 @@ public class ServoControlActivity extends IOIOActivity {
 				direction3 = ioio_.openDigitalOutput(DIRECTION3, true);
 				direction4 = ioio_.openDigitalOutput(DIRECTION4, true);
 				
+				sensor1 = ioio_.openAnalogInput(SENSOR1);
 				enableUi(true);
 				
 			} catch (ConnectionLostException e) {
@@ -92,7 +113,9 @@ public class ServoControlActivity extends IOIOActivity {
 		}
 
 		public void loop() throws ConnectionLostException {
+			SPEED = sBar.getProgress();
 			try {
+					//txtViewSensor1.setText((int) sensor1.read());
 					if(bForward.isPressed() || bBackward.isPressed()){
 						if(bForward.isPressed()){
 							direction1.write(true);
@@ -148,20 +171,6 @@ public class ServoControlActivity extends IOIOActivity {
 		}
 	}
 	
-	class roverMotor{
-		
-		private int pinNumber;
-		private boolean direction;
-		
-		private PwmOutput motorOutput;
-		private DigitalOutput directionOutput;
-		
-		public roverMotor(int pn, boolean d){
-			
-		}
-		
-	}
-	
 	@Override
 //	protected AbstractIOIOActivity.IOIOThread createIOIOThread() {
 	protected IOIOLooper createIOIOLooper() {
@@ -184,5 +193,23 @@ public class ServoControlActivity extends IOIOActivity {
 	
 	public void btnBackwardonTouch(View v, MotionEvent e){
 		
+	}
+
+	@Override
+	public void onAccuracyChanged(Sensor sensor, int accuracy) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static float getSensorReadings(int indx){
+		return sensors[indx];
+	}
+	
+	@Override
+	public void onSensorChanged(SensorEvent event) {
+		// TODO Auto-generated method stub
+		sensors[0] = event.values[0];
+		sensors[1] = event.values[1];
+		sensors[2] = event.values[2];
 	}
 }
