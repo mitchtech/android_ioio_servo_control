@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">IOIO Servo Control</string>
+    <string name="motor1">Motor 1</string>
+    <string name="motor2">Motor 2</string>
+    <string name="motor3">Motor 3</string>
+    <string name="motor4">Motor 4</string>
+
+    <string name="motor_offline">Offline</string>
+    <string name="motor_online">Online</string>
+    
+    <string name="btnForward">Forward</string>
+    <string name="btnBackward">Backward</string>
+    <string name="btnLeft">Left</string>
+    <string name="btnRight">Right</string>
+</resources>
