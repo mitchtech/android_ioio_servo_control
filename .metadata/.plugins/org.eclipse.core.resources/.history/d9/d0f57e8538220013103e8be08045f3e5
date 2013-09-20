@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:baselineAligned="false" >
+
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/txtMotor1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="@string/motor1" />
+            
+            <ToggleButton
+                android:id="@+id/tgMotor1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/txtMotor1"
+                android:textOff="@string/motor_offline"
+                android:textOn="@string/motor_online" />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/txtMotor2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="@string/motor2" />
+            
+            <ToggleButton
+                android:id="@+id/tgMotor2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/txtMotor2"
+                android:textOff="@string/motor_offline"
+                android:textOn="@string/motor_online" />
+		</RelativeLayout>
+        
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/txtMotor3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="@string/motor3" />
+            
+            <ToggleButton
+                android:id="@+id/tgMotor3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/txtMotor3"
+                android:textOff="@string/motor_offline"
+                android:textOn="@string/motor_online" />
+		</RelativeLayout>
+		
+        <RelativeLayout
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+
+            <TextView
+                android:id="@+id/txtMotor4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:text="@string/motor4" />
+            
+            <ToggleButton
+                android:id="@+id/tgMotor4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/txtMotor4"
+                android:textOff="@string/motor_offline"
+                android:textOn="@string/motor_online" />
+		</RelativeLayout>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        
+        <Button
+            android:id="@+id/btnForward"
+            android:layout_weight="1.5"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="@string/btnForward"
+             />
+        
+        <Button
+            android:id="@+id/btnBackward"
+            android:layout_weight="2"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="@string/btnBackward"
+             />
+        
+        <Button
+            android:id="@+id/btnLeft"
+            android:layout_weight="1"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="@string/btnLeft"
+             />
+        
+        <Button
+            android:id="@+id/btnRight"
+            android:layout_weight="1"
+            android:layout_width="0dip"
+            android:layout_height="wrap_content"
+            android:text="@string/btnRight"
+             />
+        
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:gravity="center" >
+
+		<SeekBar
+		    android:id="@+id/seekBar1"
+		    android:layout_width="262dp"
+		    android:layout_height="wrap_content"
+		    android:max="20000" />
+
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:gravity="center" >
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+            android:text="@string/strRawVoltage">
+	    </TextView>
+	    <TextView
+	        android:id="@+id/txtRawVoltage"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content">
+	    </TextView>
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+            android:text="@string/strVoltage">
+	    </TextView>
+		<TextView
+	        android:id="@+id/txtVoltage"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content">
+	    </TextView>
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="horizontal"
+	    android:gravity="center">
+	    
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+            android:text="@string/strAcceleration">
+	    </TextView>
+	    <TextView
+	        android:id="@+id/txtAcceleration"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content">
+	    </TextView>
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+            android:text="@string/strGyroscope">
+	    </TextView>
+	    <TextView
+	        android:id="@+id/txtGyroscope"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content">
+	    </TextView>
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+            android:text="@string/strIMU">
+	    </TextView>
+	    <TextView
+	        android:id="@+id/txtIMU"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content">
+	    </TextView>
+	    
+	</LinearLayout>
+
+</LinearLayout>
