@@ -15,5 +15,17 @@
 <fullyQualifiedTypeName name="net.mitchtech.ioio.ServoControlActivity.IOIOThread"/>
 <fullyQualifiedTypeName name="ioio.lib.api.AnalogInput"/>
 <fullyQualifiedTypeName name="android.widget.TextView"/>
+<fullyQualifiedTypeName name="android.location.LocationManager"/>
+<fullyQualifiedTypeName name="android.content.Context"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="android.location.Geocoder"/>
+<fullyQualifiedTypeName name="android.os.Bundle"/>
+<fullyQualifiedTypeName name="android.location.Address"/>
+<fullyQualifiedTypeName name="android.util.Log"/>
+<fullyQualifiedTypeName name="android.widget.Toast"/>
+<fullyQualifiedTypeName name="android.location.Criteria"/>
+<fullyQualifiedTypeName name="android.location.LocationListener"/>
+<fullyQualifiedTypeName name="android.location.Location"/>
 <fullyQualifiedTypeName name="net.mitchtech.ioio.servocontrol.R.id"/>
 </qualifiedTypeNameHistroy>

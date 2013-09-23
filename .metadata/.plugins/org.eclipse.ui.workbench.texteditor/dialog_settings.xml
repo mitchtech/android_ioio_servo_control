@@ -13,15 +13,16 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="createIOIOLooper" key="selection"/>
+		<item value="//&#x09;public void gpsSetup(){" key="selection"/>
 		<list key="findhistory">
+			<item value="//&#x09;public void gpsSetup(){"/>
+			<item value="ioio"/>
 			<item value="createIOIOLooper"/>
 			<item value="ioiolooper"/>
 			<item value="IOIOThread"/>
 			<item value="public void btnFordwardonTouch(View v, MotionEvent e){"/>
 			<item value="enable"/>
 			<item value="class"/>
-			<item value="click"/>
 		</list>
 		<list key="replacehistory">
 		</list>
